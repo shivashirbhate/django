@@ -1,0 +1,26 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+<div class="header">
+    <a href="/main" class="logo">STUDENTDS</a>
+    <div class="header-right">
+        <a href="/main/newStudent">New Student</a>
+        <a href="/main/classesListing">List Classes</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="backLink"><a href="/main/classesListing">Back</a></div>
+    <div class="data-heading">Students of {{clName}} Class</div>
+{% if listStud %}
+    
+    <ul class="sListing">
+    {% for cl in listStud %}
+        <li><a href="/main/{{cl.sRollNo}}/studentDetails"><span class="srollno">{{cl.sRollNo}}</span><span class="sname">{{ cl.sName }}</span></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>This is new Class Please add student to this class.</p>
+{% endif %}
+</div>

@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+
+<div class="header">
+    <a href="/main" class="logo">STUDENTDS</a>
+    <div class="header-right">
+        <a href="/main/newStudent">New Student</a>
+        <a class="active" href="/main/classesListing">List Classes</a>
+    </div>
+</div>
+<div class="container">
+    
+    <div class="data-heading">List of Classes</div>
+    {% if classList %}
+    <ul class="sDivisions">
+        {% for cl in classList %}
+        <li><a href="/main/{{ cl.id }}/listStudents">{{ cl.className }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No Classes are available.</p>
+    {% endif %}
+</div>

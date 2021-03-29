@@ -1,0 +1,49 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+
+<div class="header">
+    <a href="/main" class="logo">STUDENTDS</a>
+    <div class="header-right">
+        <a href="/main/newStudent">New Student</a>
+        <a class="active" href="/main/classesListing">List Classes</a>
+    </div>
+</div>
+<div class="container">
+    {% if stud %}
+    <div class="backLink"><a href="/main/{{ stud.sClass_id }}/listStudents">Back</a></div>
+    <div class="studContainer">
+        <div class="studName">
+            {{stud.sName}}
+        </div>
+
+        <div class="row">
+            <div class="col-6 ">
+                <div class="col"> Roll No:</div>
+            </div>
+            <div class="col-6">
+                <div class="col"> {{stud.sRollNo}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="col"> Class Name:</div>
+            </div>
+            <div class="col-6">
+                <div class="col"><a href="/main/{{stud.sClass_id}}/listStudents"> {{stud.sClass}} </a></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="col">Phone Number:</div>
+            </div>
+            <div class="col-6">
+                <div class="col">{{stud.snumber}}</div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No Student Found.</p>
+    {% endif %}
+</div>

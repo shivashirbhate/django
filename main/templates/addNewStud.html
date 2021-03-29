@@ -1,0 +1,48 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+
+<div class="header">
+    <a href="/main" class="logo">STUDENTDS</a>
+    <div class="header-right">
+        <a class="active" href="/main/newStudent">New Student</a>
+        <a href="/main/classesListing">List Classes</a>
+    </div>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1>Create Student</h1>
+        <p>Please fill in this form to create Student.</p>
+        {% if showMsg %}
+        <p class="msg" id="errorMsg">Success!</p>
+        {% endif %}
+        <hr>
+
+        <label for="Name"><b>Name</b></label>
+        <input type="text" placeholder="Name" name="Name" id="Name" value="Shiva Shirbhate" required autocomplete="off">
+
+        <label for="Class"><b>Class</b></label>
+
+        {% if listClass %}
+        <select class="Class" id="Class" name='clss'>
+            {% for cl in listClass %}
+            <option value="{{cl.id}}" selected>{{cl.className}}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <p class="Class" id="Class">Please Add Classes first</p>
+        {% endif %}
+
+        <label for="number"><b>Phone Number</b></label>
+        <input type="text" placeholder="Number" value="9405349099" name="number" id="number" required
+            autocomplete="off">
+        <hr>
+
+        <button type="submit" class="registerbtn">Register</button>
+
+    </div>
+
+</form>
